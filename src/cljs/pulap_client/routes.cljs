@@ -26,6 +26,8 @@
   (defroute "/about" []
     (re-frame/dispatch [::events/set-active-panel :about-panel]))
 
+  (defroute "/real-estate" []
+    (re-frame/dispatch [::events/set-active-panel :real-estate-panel]))
 
   ;; --------------------
   (hook-browser-navigation!))
