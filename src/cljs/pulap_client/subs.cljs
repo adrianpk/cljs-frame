@@ -10,3 +10,8 @@
  ::active-panel
  (fn [db _]
    (:active-panel db)))
+
+(re-frame/reg-sub
+ ::real-estate-id
+ (fn [db _]
+   (:real-estate-id db)))

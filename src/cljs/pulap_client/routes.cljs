@@ -27,7 +27,10 @@
     (re-frame/dispatch [::events/set-active-panel :about-panel]))
 
   (defroute "/real-estate" []
-    (re-frame/dispatch [::events/set-active-panel :real-estate-panel]))
+    (re-frame/dispatch [::events/set-active-panel :real-estate-list-page]))
 
+  (defroute "/real-estate/:id" [id]
+    (re-frame/dispatch [::events/set-active-panel :real-estate-item-page])
+    (re-frame/dispatch [::events/set-real-estate-id id]))
   ;; --------------------
   (hook-browser-navigation!))

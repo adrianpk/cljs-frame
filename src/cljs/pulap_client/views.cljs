@@ -1,6 +1,7 @@
 (ns pulap-client.views
   (:require [re-frame.core :as re-frame]
             [pulap-client.subs :as subs]
+            [pulap-client.assets.images :as assets]
             [pulap-client.views.real-estate :as real-estate-views]
             ))
 
@@ -21,14 +22,14 @@
    [:div [:a {:href "#/"} "go to Home Page"]]])
 
 
-
 ;; main
 
 (defn- panels [panel-name]
   (case panel-name
     :home-panel [home-panel]
     :about-panel [about-panel]
-    :real-estate-panel [pulap-client.views.real-estate/real-estate-panel]
+    :real-estate-list-page [real-estate-views/real-estate-list-page]
+    :real-estate-item-page [real-estate-views/real-estate-item-page]
     [:div]))
 
 (defn show-panel [panel-name]
@@ -36,7 +37,7 @@
 
 (defn main-panel []
   (let [active-panel (re-frame/subscribe [::subs/active-panel])]
-    [:div [main-header] 
+    [:div (main-header)
       [show-panel @active-panel]]))
 
 (defn main-header []
@@ -45,19 +46,17 @@
 (defn navbar [] 
   [:div {:class "navbar is-transparent"}
    [:div {:class "navbar-brand"}
-    [:a {:class "navbar-item", :href "https://bulma.io"}
-     [:img {:src "https://bulma.io/images/bulma-logo.png", :alt "Pulap", :width "112", :height "28"}]]
+    [:a {:class "navbar-item", :href "/"}
+     ;; [:img {:src (assets/logo), :alt "Pulap", :height "28"}]]
+     [:img {:src "/images/pulap-logo.jpg", :alt "Pulap", :height "28"}]]
     [:div {:class "navbar-burger burger", :data-target "pulap-navbar"}
      [:span]
      [:span]
-     [:span]]]
-
+      [:span]]]
    [:div {:id "pulap-navbar", :class "navbar-menu"}
-
       [:div {:class "navbar-start"}
         [:a {:class "navbar-item", :href "/"} "Home" ]
        ]
-
       [:div {:class "navbar-end"} 
         [:div {:class "navbar-item has-dropdown is-hoverable"}
           [:div {:class "field is-grouped"}
@@ -77,5 +76,15 @@
   ]
 )
 
-<div class="field is-grouped">
-<p class="control">
+
+
+
+
+
+
+
+
+
+
+
+

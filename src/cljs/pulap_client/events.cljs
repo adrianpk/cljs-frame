@@ -12,3 +12,8 @@
  ::set-active-panel
  (fn-traced [db [_ active-panel]]
    (assoc db :active-panel active-panel)))
+
+(re-frame/reg-event-db
+ ::set-real-estate-id
+ (fn [db [_ id]]
+   (assoc db :real-estate-id id)))
