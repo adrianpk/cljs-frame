@@ -15,3 +15,8 @@
  ::real-estate-id
  (fn [db _]
    (:real-estate-id db)))
+
+(re-frame/reg-sub
+ ::real-estate-item-data
+ (fn [db _]
+   (:real-estate-item-data db)))
