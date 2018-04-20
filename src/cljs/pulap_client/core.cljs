@@ -6,7 +6,6 @@
             [pulap-client.views :as views]
             [pulap-client.config :as config]))
 
-
 (defn dev-setup []
   (when config/debug?
     (enable-console-print!)

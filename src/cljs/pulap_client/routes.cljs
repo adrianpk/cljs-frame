@@ -5,8 +5,7 @@
             [goog.events :as gevents]
             [goog.history.EventType :as EventType]
             [re-frame.core :as re-frame]
-            [pulap-client.events :as events]
-            ))
+            [pulap-client.events :as events]))
 
 (defn hook-browser-navigation! []
   (doto (History.)
@@ -29,8 +28,14 @@
   (defroute "/real-estate" []
     (re-frame/dispatch [::events/set-active-panel :real-estate-list-page]))
 
+  (defroute "/real-estate-edit/:id" [id]
+    (re-frame/dispatch [::events/set-active-panel :real-estate-item-edit-page])
+    (re-frame/dispatch [::events/fetch-real-estate-item id]))
+
   (defroute "/real-estate/:id" [id]
     (re-frame/dispatch [::events/set-active-panel :real-estate-item-page])
-    (re-frame/dispatch [::events/set-real-estate-id id]))
+    (re-frame/dispatch [::events/fetch-real-estate-item id])
+    ;; (re-frame/dispatch [::events/set-real-estate-id id]))
+)
   ;; --------------------
   (hook-browser-navigation!))
