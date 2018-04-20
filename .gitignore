@@ -6,6 +6,7 @@
 out
 
 # Custom
+**/sample.*
 /.cljs_rhino_repl
 
 
